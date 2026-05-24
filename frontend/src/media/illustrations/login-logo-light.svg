@@ -1,24 +1,45 @@
-<svg viewBox="0 0 280 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 120" width="500" height="120">
   <defs>
-    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#7c3aed"/>
-      <stop offset="100%" stop-color="#9333ea"/>
-    </linearGradient>
+    <filter id="glow2">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="glow-soft2">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
   </defs>
 
-  <!-- Left lobe -->
-  <path d="M49 8 C37 6 20 12 15 25 C10 35 12 44 17 51 C11 59 13 72 22 79 C29 85 40 83 46 78 L46 8Z" fill="url(#bg2)"/>
-  <!-- Right lobe -->
-  <path d="M55 8 C67 6 84 12 89 25 C94 35 92 44 87 51 C93 59 91 72 82 79 C75 85 64 83 58 78 L58 8Z" fill="url(#bg2)"/>
+  <!-- Background -->
+  <rect width="500" height="120" fill="#060818" rx="8"/>
 
-  <!-- White fold details -->
-  <path d="M22 18 C17 24 17 33 22 38 C16 43 16 56 22 62" stroke="rgba(255,255,255,0.6)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-  <path d="M34 12 C29 20 29 32 34 39 C28 45 28 59 34 66" stroke="rgba(255,255,255,0.45)" stroke-width="2" fill="none" stroke-linecap="round"/>
-  <path d="M82 18 C87 24 87 33 82 38 C88 43 88 56 82 62" stroke="rgba(255,255,255,0.6)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-  <path d="M70 12 C75 20 75 32 70 39 C76 45 76 59 70 66" stroke="rgba(255,255,255,0.45)" stroke-width="2" fill="none" stroke-linecap="round"/>
-  <line x1="52" y1="9" x2="52" y2="78" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+  <!-- AURA text with glow -->
+  <text
+    x="48"
+    y="84"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="74"
+    font-weight="900"
+    letter-spacing="6"
+    fill="#c4b5fd"
+    filter="url(#glow2)"
+  >AURA</text>
 
-  <!-- Dark text for light mode -->
-  <text x="112" y="48" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="30" font-weight="700" fill="#1e1b29" letter-spacing="-0.5">AURA</text>
-  <text x="114" y="74" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="17" font-weight="400" fill="#7c3aed" letter-spacing="1.5">Brain</text>
+  <!-- Brain text -->
+  <text
+    x="320"
+    y="84"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="54"
+    font-weight="300"
+    letter-spacing="2"
+    fill="#a78bfa"
+    filter="url(#glow-soft2)"
+  >Brain</text>
 </svg>
