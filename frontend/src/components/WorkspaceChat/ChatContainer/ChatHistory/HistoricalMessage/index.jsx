@@ -3,6 +3,7 @@ import { Info, Warning } from "@phosphor-icons/react";
 import Actions from "./Actions";
 import renderMarkdown from "@/utils/chat/markdown";
 import Citations from "../Citation";
+import useUser from "@/hooks/useUser";
 import { v4 } from "uuid";
 import DOMPurify from "@/utils/chat/purify";
 import { EditMessageForm, useEditMessage } from "./Actions/EditMessage";
@@ -45,6 +46,8 @@ const HistoricalMessage = ({
   // on every render and remount the subtree, wiping TruncatableContent state.
   const [uuid] = useState(() => uuidProp ?? v4());
   const { t } = useTranslation();
+  const { user } = useUser();
+  const isAdminOrManager = !user || ["admin", "manager"].includes(user?.role);
   const { isEditing } = useEditMessage({ chatId, role });
   const { isDeleted, completeDelete, onEndAnimation } = useWatchDeleteMessage({
     chatId,
@@ -188,7 +191,7 @@ const HistoricalMessage = ({
             metrics={metrics}
           />
         </div>
-        {role === "assistant" && <Citations sources={sources} />}
+        {role === "assistant" && isAdminOrManager && <Citations sources={sources} />}
       </div>
     </div>
   );
