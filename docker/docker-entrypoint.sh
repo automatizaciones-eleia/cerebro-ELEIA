@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Default STORAGE_DIR if not set
+export STORAGE_DIR="${STORAGE_DIR:-/app/server/storage}"
+
 # Check if STORAGE_DIR is set
 if [ -z "$STORAGE_DIR" ]; then
     echo "================================================================"
