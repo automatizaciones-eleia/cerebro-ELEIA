@@ -34,7 +34,7 @@ class MetaGenerator {
     start_url: "/",
     icons: [
       {
-        src: "/favicon.svg",
+        src: "/favicon.png",
         sizes: "any",
       },
     ],
@@ -53,7 +53,7 @@ class MetaGenerator {
     return [
       {
         tag: "link",
-        props: { type: "image/svg+xml", href: "/favicon.svg" },
+        props: { type: "image/svg+xml", href: "/favicon.png" },
         content: null,
       },
       {
@@ -138,8 +138,8 @@ class MetaGenerator {
         },
       },
 
-      { tag: "link", props: { rel: "icon", href: "/favicon.svg" } },
-      { tag: "link", props: { rel: "apple-touch-icon", href: "/favicon.svg" } },
+      { tag: "link", props: { rel: "icon", href: "/favicon.png" } },
+      { tag: "link", props: { rel: "apple-touch-icon", href: "/favicon.png" } },
 
       // PWA specific tags
       {
@@ -188,13 +188,13 @@ class MetaGenerator {
   }
 
   #validUrl(faviconUrl = null) {
-    if (faviconUrl === null) return "/favicon.svg";
+    if (faviconUrl === null) return "/favicon.png";
     if (faviconUrl.startsWith("/")) return faviconUrl;
     try {
       const url = new URL(faviconUrl);
       return url.toString();
     } catch {
-      return "/favicon.svg";
+      return "/favicon.png";
     }
   }
 
@@ -338,13 +338,13 @@ class MetaGenerator {
         null
       );
 
-      let iconUrl = "/favicon.svg";
+      let iconUrl = "/favicon.png";
       if (faviconURL) {
         try {
           new URL(faviconURL);
           iconUrl = faviconURL;
         } catch {
-          iconUrl = "/favicon.svg";
+          iconUrl = "/favicon.png";
         }
       }
 
