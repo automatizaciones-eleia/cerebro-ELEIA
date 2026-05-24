@@ -36,8 +36,7 @@ export default function QuickActions({
       <QuickActionButton
         label={t("main-page.quickActions.uploadDocument")}
         onClick={onUploadDocument}
-        // Any user can upload documents.
-        show={true}
+        show={!user || ["admin", "manager"].includes(user?.role)}
       />
     </div>
   );
@@ -49,7 +48,7 @@ function QuickActionButton({ label, onClick, show = true }) {
     <button
       type="button"
       onClick={onClick}
-      className="px-4 py-2 rounded-full bg-theme-bg-chat-input text-white/80 text-sm font-normal leading-5 hover:bg-zinc-700 light:hover:bg-black/20 transition-colors light:text-theme-text-primary"
+      className="px-5 py-2.5 rounded-full bg-[#1a1726] border border-[rgba(139,92,246,0.25)] text-white/80 text-sm font-normal leading-5 hover:border-[rgba(139,92,246,0.6)] hover:text-white hover:bg-[rgba(139,92,246,0.1)] transition-all duration-200"
     >
       {label}
     </button>

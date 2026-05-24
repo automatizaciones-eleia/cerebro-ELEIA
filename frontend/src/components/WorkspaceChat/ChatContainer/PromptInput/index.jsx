@@ -6,6 +6,7 @@ import SpeechToText from "./SpeechToText";
 import { Tooltip } from "react-tooltip";
 import AttachmentManager from "./Attachments";
 import AttachItem from "./AttachItem";
+import useUser from "@/hooks/useUser";
 import {
   ATTACHMENTS_PROCESSED_EVENT,
   ATTACHMENTS_PROCESSING_EVENT,
@@ -44,6 +45,8 @@ export default function PromptInput({
   threadSlug = null,
 }) {
   const { t } = useTranslation();
+  const { user } = useUser();
+  const isAdminOrManager = user?.role === "admin" || user?.role === "manager";
   const { showAgentCommand = true } = workspace ?? {};
   const { isDisabled } = useIsDisabled();
   const agentSessionActive = useIsAgentSessionActive();
@@ -340,7 +343,7 @@ export default function PromptInput({
               centered={centered}
               highlightedIndexRef={toolsHighlightRef}
             />
-            <div className="bg-zinc-800 light:bg-white light:border light:border-slate-300 rounded-[20px] pwa:rounded-3xl flex flex-col px-5 overflow-hidden">
+            <div className="chat-input-premium flex flex-col px-5 overflow-hidden">
               <AttachmentManager attachments={attachments} />
               <div className="flex items-center">
                 <textarea
@@ -367,23 +370,21 @@ export default function PromptInput({
               <div className="flex justify-between items-center pt-3.5 pb-3">
                 <div className="flex items-center gap-x-0.25">
                   <div className="flex items-center gap-x-1">
-                    <AttachItem
-                      workspaceSlug={workspaceSlug}
-                      workspaceThreadSlug={threadSlug}
-                    />
-                    <AgentSessionButton
-                      sendCommand={sendCommand}
-                      promptInput={promptInput}
-                      textareaRef={textareaRef}
-                      visible={!agentSessionActive & showAgentCommand}
-                    />
+                    {isAdminOrManager && (
+                      <AttachItem
+                        workspaceSlug={workspaceSlug}
+                        workspaceThreadSlug={threadSlug}
+                      />
+                    )}
+                    {isAdminOrManager && (
+                      <AgentSessionButton
+                        sendCommand={sendCommand}
+                        promptInput={promptInput}
+                        textareaRef={textareaRef}
+                        visible={!agentSessionActive & showAgentCommand}
+                      />
+                    )}
                   </div>
-                  <ToolsButton
-                    showTools={showTools}
-                    setShowTools={setShowTools}
-                    textareaRef={textareaRef}
-                    autoOpenedToolsRef={autoOpenedToolsRef}
-                  />
                 </div>
                 <div className="flex gap-x-2 items-center">
                   <SpeechToText sendCommand={sendCommand} />
@@ -496,8 +497,8 @@ function SendPromptButton({ formRef, promptInput, isDisabled }) {
         disabled={isDisabled || !promptInput.trim().length}
         className={`border-none flex justify-center items-center rounded-full w-8 h-8 transition-all ${
           promptInput.trim().length && !isDisabled
-            ? "cursor-pointer bg-white hover:bg-zinc-200 light:bg-slate-800 light:hover:bg-slate-600"
-            : "cursor-not-allowed bg-zinc-600 light:bg-slate-400"
+            ? "cursor-pointer send-btn-glow"
+            : "cursor-not-allowed bg-zinc-700 opacity-40"
         }`}
         data-tooltip-id="send-prompt"
         data-tooltip-content={
@@ -508,7 +509,7 @@ function SendPromptButton({ formRef, promptInput, isDisabled }) {
         aria-label={t("chat_window.send")}
       >
         <ArrowUp
-          className="w-[18px] h-[18px] pointer-events-none text-zinc-800 light:text-white"
+          className="w-[18px] h-[18px] pointer-events-none text-white"
           weight="bold"
         />
         <span className="sr-only">{t("chat_window.send")}</span>

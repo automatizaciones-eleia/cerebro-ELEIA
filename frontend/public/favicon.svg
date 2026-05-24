@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <rect width="32" height="32" rx="6" fill="#0B0813"/>
+  <!-- Left lobe -->
+  <path d="M16 8 C16 8 10 8 8 12 C6 16 7 20 9 22 C10 23 11 24 12 24 L16 24 L16 8Z"
+        fill="#8B5CF6" opacity="0.9"/>
+  <!-- Right lobe -->
+  <path d="M16 8 C16 8 22 8 24 12 C26 16 25 20 23 22 C22 23 21 24 20 24 L16 24 L16 8Z"
+        fill="#7C3AED" opacity="0.9"/>
+  <!-- Center divider -->
+  <line x1="16" y1="9" x2="16" y2="24" stroke="rgba(255,255,255,0.4)" stroke-width="0.8"/>
+  <!-- Left fold lines -->
+  <path d="M11 13 Q9 16 11 19" stroke="rgba(255,255,255,0.5)" stroke-width="0.8" fill="none" stroke-linecap="round"/>
+  <path d="M13 11 Q11 14 13 17" stroke="rgba(255,255,255,0.4)" stroke-width="0.7" fill="none" stroke-linecap="round"/>
+  <!-- Right fold lines -->
+  <path d="M21 13 Q23 16 21 19" stroke="rgba(255,255,255,0.5)" stroke-width="0.8" fill="none" stroke-linecap="round"/>
+  <path d="M19 11 Q21 14 19 17" stroke="rgba(255,255,255,0.4)" stroke-width="0.7" fill="none" stroke-linecap="round"/>
+  <!-- Bottom stem -->
+  <rect x="14.5" y="24" width="3" height="2" rx="1" fill="#8B5CF6" opacity="0.7"/>
+</svg>

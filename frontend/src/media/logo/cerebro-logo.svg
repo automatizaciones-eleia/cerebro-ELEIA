@@ -1,0 +1,30 @@
+<svg viewBox="0 0 200 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#9333ea"/>
+      <stop offset="100%" stop-color="#c084fc"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Brain icon 44x44, centered at 22,22 -->
+  <!-- Left lobe -->
+  <path d="M21 5 C14 4 6 8 4 16 C2 22 4 27 7 31 C4 36 5 43 11 46 C15 48 20 46 22 43 L22 5Z" fill="url(#g1)"/>
+  <!-- Right lobe -->
+  <path d="M23 5 C30 4 38 8 40 16 C42 22 40 27 37 31 C40 36 39 43 33 46 C29 48 24 46 22 43 L22 5Z" fill="url(#g1)"/>
+
+  <!-- White fold details - left side -->
+  <path d="M10 12 C7 16 7 22 10 25 C7 28 7 36 10 40" stroke="rgba(255,255,255,0.55)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  <path d="M16 8 C13 14 13 22 16 27 C13 31 13 39 16 43" stroke="rgba(255,255,255,0.4)" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+
+  <!-- White fold details - right side -->
+  <path d="M34 12 C37 16 37 22 34 25 C37 28 37 36 34 40" stroke="rgba(255,255,255,0.55)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  <path d="M28 8 C31 14 31 22 28 27 C31 31 31 39 28 43" stroke="rgba(255,255,255,0.4)" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+
+  <!-- Center dividing line -->
+  <line x1="22" y1="6" x2="22" y2="43" stroke="rgba(255,255,255,0.3)" stroke-width="1.2"/>
+
+  <!-- Text: Cerebro -->
+  <text x="54" y="22" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="17" font-weight="700" fill="#ffffff" letter-spacing="-0.3">Cerebro</text>
+  <!-- Subtext -->
+  <text x="54" y="38" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="11" font-weight="400" fill="#c084fc" letter-spacing="0.8">Lau y Santi</text>
+</svg>

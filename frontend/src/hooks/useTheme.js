@@ -27,8 +27,11 @@ const availableThemes = {
 export function useTheme() {
   const [theme, _setTheme] = useState(() => {
     const stored = localStorage.getItem("theme");
-    if (stored === "default") return "dark"; // migrate legacy value
-    return stored || "system";
+    // Force dark mode — ignore any stored "light" or "system" preference
+    if (!stored || stored === "default" || stored === "light" || stored === "system") {
+      return "dark";
+    }
+    return stored;
   });
 
   const [systemTheme, setSystemTheme] = useState(() =>

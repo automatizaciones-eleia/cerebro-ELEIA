@@ -4,6 +4,7 @@ import { Warning } from "@phosphor-icons/react";
 import renderMarkdown from "@/utils/chat/markdown";
 import DOMPurify from "@/utils/chat/purify";
 import Citations from "../Citation";
+import useUser from "@/hooks/useUser";
 import {
   THOUGHT_REGEX_CLOSE,
   THOUGHT_REGEX_COMPLETE,
@@ -12,6 +13,8 @@ import {
 } from "../ThoughtContainer";
 
 const PromptReply = ({ uuid, reply, pending, error, sources = [] }) => {
+  const { user } = useUser();
+  const isAdminOrManager = !user || ["admin", "manager"].includes(user?.role);
   if (!reply && sources.length === 0 && !pending && !error) return null;
 
   if (pending) {
@@ -46,7 +49,7 @@ const PromptReply = ({ uuid, reply, pending, error, sources = [] }) => {
           message={reply}
           messageId={uuid}
         />
-        <Citations sources={sources} />
+        {isAdminOrManager && <Citations sources={sources} />}
       </div>
     </div>
   );

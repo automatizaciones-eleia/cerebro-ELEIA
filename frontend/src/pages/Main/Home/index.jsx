@@ -287,7 +287,7 @@ function HomeContent({ workspace, setWorkspace, threadSlug, setThreadSlug }) {
         className="relative flex md:ml-[2px] md:mr-[16px] md:my-[16px] w-full h-full z-[2]"
       >
         <ChatSettingsMenu />
-        <div className="flex-1 min-w-0 transition-all duration-500 relative md:rounded-[16px] bg-zinc-900 light:bg-white w-full h-full overflow-hidden border-none light:border-solid light:border light:border-theme-modal-border">
+        <div className="flex-1 min-w-0 transition-all duration-500 relative md:rounded-[16px] bg-[#0B0813] w-full h-full overflow-hidden border border-[rgba(139,92,246,0.12)] md:border">
           {isMobile && <SidebarMobileHeader />}
           <WorkspaceModelPicker workspaceSlug={workspace?.slug} />
           <DnDFileUploaderWrapper>

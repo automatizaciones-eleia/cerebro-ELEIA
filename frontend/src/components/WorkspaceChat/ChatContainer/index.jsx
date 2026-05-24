@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext, useRef } from "react";
+import useUser from "@/hooks/useUser";
 import ChatHistory from "./ChatHistory";
 import { CLEAR_ATTACHMENTS_EVENT, DndUploaderContext } from "./DnDWrapper";
 import PromptInput, {
@@ -44,6 +45,8 @@ export default function ChatContainer({
 }) {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const { user } = useUser();
+  const isAdminOrManager = !user || ["admin", "manager"].includes(user?.role);
   const [loadingResponse, setLoadingResponse] = useState(false);
   const [chatHistory, setChatHistory] = useState(knownHistory);
   const [socketId, setSocketId] = useState(null);
@@ -388,7 +391,7 @@ export default function ChatContainer({
           className="relative flex md:ml-[2px] md:mr-[16px] md:my-[16px] w-full h-full z-[2]"
         >
           <ChatSettingsMenu />
-          <div className="flex-1 min-w-0 transition-all duration-500 relative md:rounded-[16px] bg-zinc-900 light:bg-white w-full h-full overflow-hidden border-none light:border-solid light:border light:border-theme-modal-border">
+          <div className="flex-1 min-w-0 transition-all duration-500 relative md:rounded-[16px] bg-[#0B0813] w-full h-full overflow-hidden border border-[rgba(139,92,246,0.12)]">
             {isMobile && <SidebarMobileHeader />}
             <WorkspaceModelPicker workspaceSlug={workspace.slug} />
             <DnDFileUploaderWrapper>
@@ -441,7 +444,7 @@ export default function ChatContainer({
         className="relative flex md:ml-[2px] md:mr-[16px] md:my-[16px] w-full h-full z-[2]"
       >
         <ChatSettingsMenu />
-        <div className="flex-1 min-w-0 transition-all duration-500 relative md:rounded-[16px] bg-zinc-900 light:bg-white text-white light:text-slate-900 h-full overflow-hidden border-none light:border-solid light:border light:border-theme-modal-border">
+        <div className="flex-1 min-w-0 transition-all duration-500 relative md:rounded-[16px] bg-[#0B0813] text-white h-full overflow-hidden border border-[rgba(139,92,246,0.12)]">
           {isMobile && <SidebarMobileHeader />}
           <WorkspaceModelPicker workspaceSlug={workspace.slug} />
           <DnDFileUploaderWrapper>
@@ -471,7 +474,7 @@ export default function ChatContainer({
           </DnDFileUploaderWrapper>
           <ChatTooltips />
         </div>
-        <SourcesSidebar />
+        {isAdminOrManager && <SourcesSidebar />}
         <MemoriesSidebar workspace={workspace} />
       </div>
     </ChatSidebarProvider>
