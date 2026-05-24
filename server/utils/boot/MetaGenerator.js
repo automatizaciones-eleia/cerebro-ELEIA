@@ -102,7 +102,7 @@ class MetaGenerator {
         props: {
           property: "og:image",
           content:
-            "/og-image.svg",
+            "/og-image.png",
         },
       },
 
@@ -134,7 +134,7 @@ class MetaGenerator {
         props: {
           property: "twitter:image",
           content:
-            "/og-image.svg",
+            "/og-image.png",
         },
       },
 
