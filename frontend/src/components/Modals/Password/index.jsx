@@ -16,7 +16,7 @@ export default function PasswordModal({ mode = "single" }) {
       <img
         src={loginLogo}
         alt="Logo"
-        className={`max-h-[80px] ${isCustomLogo ? "rounded-lg" : ""}`}
+        className={`max-h-[180px] ${isCustomLogo ? "rounded-lg" : ""}`}
         style={{ objectFit: "contain" }}
       />
       {mode === "single" ? <SingleUserAuth /> : <MultiUserAuth />}
