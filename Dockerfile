@@ -181,6 +181,9 @@ COPY --chown=anythingllm:anythingllm ./docker/seed-storage /app/seed-storage
 HEALTHCHECK --interval=1m --timeout=10s --start-period=1m \
   CMD /bin/bash /usr/local/bin/docker-healthcheck.sh || exit 1
 
+# Run as root so the entrypoint can write to Railway volume mounts
+USER root
+
 # Run the server
 # CMD ["sh", "-c", "tail -f /dev/null"] # For development: keep container open
 ENTRYPOINT ["/bin/bash", "/usr/local/bin/docker-entrypoint.sh"]
