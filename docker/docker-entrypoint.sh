@@ -3,6 +3,14 @@
 # Default STORAGE_DIR if not set
 export STORAGE_DIR="${STORAGE_DIR:-/app/server/storage}"
 
+# Seed storage on first run if volume is empty
+if [ ! -f "$STORAGE_DIR/anythingllm.db" ] && [ -d "/app/seed-storage" ]; then
+  echo "Seeding storage from initial data..."
+  mkdir -p "$STORAGE_DIR"
+  cp -r /app/seed-storage/. "$STORAGE_DIR/"
+  echo "Storage seeded successfully."
+fi
+
 # Check if STORAGE_DIR is set
 if [ -z "$STORAGE_DIR" ]; then
     echo "================================================================"

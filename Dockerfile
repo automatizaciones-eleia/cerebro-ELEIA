@@ -174,6 +174,9 @@ ENV ANYTHING_LLM_RUNTIME=docker
 ENV DEPLOYMENT_VERSION=1.12.1
 ENV STORAGE_DIR=/app/server/storage
 
+# Seed data (copied to volume on first run by entrypoint)
+COPY --chown=anythingllm:anythingllm ./docker/seed-storage /app/seed-storage
+
 # Setup the healthcheck
 HEALTHCHECK --interval=1m --timeout=10s --start-period=1m \
   CMD /bin/bash /usr/local/bin/docker-healthcheck.sh || exit 1
