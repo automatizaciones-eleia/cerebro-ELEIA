@@ -114,7 +114,7 @@ const TRANSLATIONS = {
   },
   login: {
     "multi-user": {
-      welcome: "Bienvenido a",
+      welcome: "Bienvenido",
       "placeholder-username": "Nombre de usuario",
       "placeholder-password": "Contraseña",
       login: "Iniciar sesión",

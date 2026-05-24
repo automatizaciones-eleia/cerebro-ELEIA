@@ -24,7 +24,7 @@
   <line x1="52" y1="9" x2="52" y2="78" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
 
   <!-- Text: Cerebro -->
-  <text x="112" y="48" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="30" font-weight="700" fill="#ffffff" letter-spacing="-0.5">Cerebro</text>
+  <text x="112" y="48" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="30" font-weight="700" fill="#ffffff" letter-spacing="-0.5">AURA</text>
   <!-- Subtext -->
-  <text x="114" y="74" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="17" font-weight="400" fill="#c084fc" letter-spacing="1.5">Lau y Santi</text>
+  <text x="114" y="74" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif" font-size="17" font-weight="400" fill="#c084fc" letter-spacing="1.5">Brain</text>
 </svg>

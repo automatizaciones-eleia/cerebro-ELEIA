@@ -27,14 +27,14 @@ class MetaGenerator {
   #customConfig = null;
 
   #defaultManifest = {
-    name: "AnythingLLM",
-    short_name: "AnythingLLM",
+    name: "AURA Brain",
+    short_name: "AURA Brain",
     display: "standalone",
     orientation: "portrait",
     start_url: "/",
     icons: [
       {
-        src: "/favicon.png",
+        src: "/favicon.svg",
         sizes: "any",
       },
     ],
@@ -53,27 +53,27 @@ class MetaGenerator {
     return [
       {
         tag: "link",
-        props: { type: "image/svg+xml", href: "/favicon.png" },
+        props: { type: "image/svg+xml", href: "/favicon.svg" },
         content: null,
       },
       {
         tag: "title",
         props: null,
-        content: "AnythingLLM | Your personal LLM trained on anything",
+        content: "AURA Brain",
       },
 
       {
         tag: "meta",
         props: {
           name: "title",
-          content: "AnythingLLM | Your personal LLM trained on anything",
+          content: "AURA Brain",
         },
       },
       {
         tag: "meta",
         props: {
           description: "title",
-          content: "AnythingLLM | Your personal LLM trained on anything",
+          content: "AURA Brain",
         },
       },
 
@@ -87,14 +87,14 @@ class MetaGenerator {
         tag: "meta",
         props: {
           property: "og:title",
-          content: "AnythingLLM | Your personal LLM trained on anything",
+          content: "AURA Brain",
         },
       },
       {
         tag: "meta",
         props: {
           property: "og:description",
-          content: "AnythingLLM | Your personal LLM trained on anything",
+          content: "AURA Brain",
         },
       },
       {
@@ -119,14 +119,14 @@ class MetaGenerator {
         tag: "meta",
         props: {
           property: "twitter:title",
-          content: "AnythingLLM | Your personal LLM trained on anything",
+          content: "AURA Brain",
         },
       },
       {
         tag: "meta",
         props: {
           property: "twitter:description",
-          content: "AnythingLLM | Your personal LLM trained on anything",
+          content: "AURA Brain",
         },
       },
       {
@@ -138,8 +138,8 @@ class MetaGenerator {
         },
       },
 
-      { tag: "link", props: { rel: "icon", href: "/favicon.png" } },
-      { tag: "link", props: { rel: "apple-touch-icon", href: "/favicon.png" } },
+      { tag: "link", props: { rel: "icon", href: "/favicon.svg" } },
+      { tag: "link", props: { rel: "apple-touch-icon", href: "/favicon.svg" } },
 
       // PWA specific tags
       {
@@ -188,12 +188,13 @@ class MetaGenerator {
   }
 
   #validUrl(faviconUrl = null) {
-    if (faviconUrl === null) return "/favicon.png";
+    if (faviconUrl === null) return "/favicon.svg";
+    if (faviconUrl.startsWith("/")) return faviconUrl;
     try {
       const url = new URL(faviconUrl);
       return url.toString();
     } catch {
-      return "/favicon.png";
+      return "/favicon.svg";
     }
   }
 
@@ -229,7 +230,7 @@ class MetaGenerator {
             props: null,
             content:
               customTitle ??
-              "AnythingLLM | Your personal LLM trained on anything",
+              "AURA Brain",
           };
         }
         // Override meta title
@@ -240,7 +241,7 @@ class MetaGenerator {
               name: "title",
               content:
                 customTitle ??
-                "AnythingLLM | Your personal LLM trained on anything",
+                "AURA Brain",
             },
           };
         }
@@ -252,7 +253,7 @@ class MetaGenerator {
               property: "og:title",
               content:
                 customTitle ??
-                "AnythingLLM | Your personal LLM trained on anything",
+                "AURA Brain",
             },
           };
         }
@@ -264,7 +265,7 @@ class MetaGenerator {
               property: "twitter:title",
               content:
                 customTitle ??
-                "AnythingLLM | Your personal LLM trained on anything",
+                "AURA Brain",
             },
           };
         }
@@ -330,20 +331,20 @@ class MetaGenerator {
       const { SystemSettings } = require("../../models/systemSettings");
       const manifestName = await SystemSettings.getValueOrFallback(
         { label: "meta_page_title" },
-        "AnythingLLM"
+        "AURA Brain"
       );
       const faviconURL = await SystemSettings.getValueOrFallback(
         { label: "meta_page_favicon" },
         null
       );
 
-      let iconUrl = "/favicon.png";
+      let iconUrl = "/favicon.svg";
       if (faviconURL) {
         try {
           new URL(faviconURL);
           iconUrl = faviconURL;
         } catch {
-          iconUrl = "/favicon.png";
+          iconUrl = "/favicon.svg";
         }
       }
 
